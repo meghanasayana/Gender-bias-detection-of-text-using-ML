@@ -1,72 +1,128 @@
-# Gender Bias Detection in Text (EDOS + CrowS-Pairs)
+# Gender Bias Detection of Text Using Machine Learning
+
+Detect, audit, and mitigate gender bias in textual data using state-of-the-art NLP techniques, transformer models, and fairness analysis.
+
+---
+
+## Overview
+
+This project aims to identify, analyze, and mitigate gender bias in text using machine learning and deep learning models. It leverages the [Davidson Hate Speech Dataset](https://github.com/meghanasayana/Gender-bias-detection-of-text-using-ML), [CrowS-Pairs dataset](https://github.com/nyu-mll/crows-pairs), and transformer models (RoBERTa) for sequence classification.
+
+---
 
 ## Folder Layout
+
 ```text
-gender-bias-nlp/
-├── requirements.txt
-├── 00_download.py
-├── 01_train.py
-├── 02_bias_audit.py
-├── 03_fairness.py
-├── 04_mitigate.py
-└── README.md
+Gender-bias-detection-of-text-using-ML/
+│
+├── 00_download.py       # Download and prepare the datasets
+├── 01_train.py          # Train bias detection model (RoBERTa)
+├── 02_bias_audit.py     # Audit bias using CrowS-Pairs
+├── 03_fairness.py       # Fairness analysis and metrics
+├── 04_mitigate.py       # Mitigation script (Equalized Odds)
+├── requirements.txt     # Python package requirements
+├── README.md
+└── model/               # Saved models and tokenizer
 ```
 
-## Quick Start
+---
 
-Follow these steps to set up and run the gender bias detection system:
+## Setup
 
-### 1. Create and activate a virtual environment
+### Clone the repository
 
 ```bash
-python -m venv venv
+git clone https://github.com/meghanasayana/Gender-bias-detection-of-text-using-ML.git
+cd Gender-bias-detection-of-text-using-ML
 ```
 
-```bash
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-```
-
-### 2. Install dependencies
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Download and cache datasets
+---
+
+## Dataset
+
+- **Hate Speech Detection Dataset**: Preprocessed for binary classification.
+- **CrowS-Pairs**: Used for bias auditing. Focus on sentences related to gender.
+
+---
+
+## Running the Pipeline
+
+### Step 1: Download and Prepare Datasets
 
 ```bash
 python 00_download.py
 ```
 
-### 4. Fine-tune the RoBERTa model
+### Step 2: Train the Model
 
 ```bash
 python 01_train.py
 ```
 
-### 5. Run gender bias audit using CrowS-Pairs
+### Step 3: Bias Audit
 
 ```bash
 python 02_bias_audit.py
 ```
 
-### 6. Calculate fairness metrics on EDOS test set
+### Step 4: Fairness Analysis
 
 ```bash
 python 03_fairness.py
 ```
 
-### 7. Apply equalized-odds post-processing mitigation
+### Step 5: Bias Mitigation (Equalized Odds)
 
 ```bash
 python 04_mitigate.py
 ```
 
-## What is Included
+---
 
-* **EDOS Sexism Detection Dataset** – The SemEval-2023 Task 10 dataset for identifying sexism in text[4].
-* **CrowS-Pairs Minimal Pairs** – A dataset for auditing gender bias through minimal pair comparisons[6][12].
-* **AIF360 Metrics** – Comprehensive fairness metrics from IBM's AI Fairness 360 toolkit[7].
-* **Equalized Odds Mitigation** – Post-processing technique to reduce disparate impact across demographic groups[7].
+## Key Results & Metrics
 
-**Note:** Results and plots generated from these scripts can be directly incorporated into your research report or analysis documentation.
+- **Model test accuracy**: ~0.95
+- **CrowS-Pairs (gender bias audit)**: Anti-stereotype preference ≈ 0.435 (ideal >0.5)
+- **Fairness Analysis**:
+  - Statistical Parity Difference: ≈ -0.02
+  - Equal Opportunity Difference: ≈ -0.09
+  - Accuracy Female-Coded: ≈ 0.96
+  - Accuracy Male-Coded: ≈ 0.94
+- **Mitigation**: Threshold adjustment reduces SPD/EOD while balancing accuracy.
+
+---
+
+## Interpretation Guide
+
+- **Statistical Parity Difference (SPD)**: Close to 0 means equal positive rates across groups.
+- **Equal Opportunity Difference (EOD)**: Low absolute value = less bias; large values = more bias.
+- **Post-mitigation**: Look for reduction in bias metrics with minimal loss of accuracy.
+
+---
+
+## Authors & Credits
+
+- [Meghana Sayana](https://github.com/meghanasayana)
+- Based on CrowS-Pairs and [Davidson Hate Speech dataset](https://github.com/meghanasayana/Gender-bias-detection-of-text-using-ML)
+
+**Colab Notebook**: [View on Google Colab](https://colab.research.google.com/drive/1z-IYJ0ysK-UxdTPTAl5D9ZsaKu0I0t8Z#updateTitle=true&folderId=13BYgcSf-8-z3-FybKA5MfmJTAKifyffU&scrollTo=ONpJynWbSGxj)
+
+---
+
+## License
+
+This project is MIT Licensed.
+
+---
+
+## References
+
+- [CrowS-Pairs Dataset](https://github.com/nyu-mll/crows-pairs)
+- [RoBERTa Model](https://huggingface.co/roberta-base)
+- [Transformers Library](https://github.com/huggingface/transformers)
