@@ -96,7 +96,7 @@ print(response.json())
 
 ## 🤝 Contributors
 
-- [Your Name](https://github.com/meghanasayana)
+- [meghanasayana](https://github.com/meghanasayana)
 - Based on original datasets and open NLP tools cited below
 
 ***
