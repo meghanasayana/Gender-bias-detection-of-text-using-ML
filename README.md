@@ -1,1 +1,14 @@
 # Gender-bias-detection-of-text-using-ML
+
+## Folder Layout
+
+```text
+gender-bias-nlp/
+├── requirements.txt
+├── 00_download.py
+├── 01_train.py
+├── 02_bias_audit.py
+├── 03_fairness.py
+├── 04_mitigate.py
+└── README.md
+```
