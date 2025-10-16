@@ -1,7 +1,9 @@
-torch>=2.2
-transformers>=4.44
-datasets>=2.20
-evaluate>=0.4
-scikit-learn>=1.4
-aif360>=0.6.1
-tqdm>=4.66
+torch>=2.2.0
+transformers>=4.44.0
+datasets>=2.20.0
+gradio>=4.0.0
+scikit-learn>=1.4.0
+pandas>=2.0.0
+numpy>=1.24.0
+tqdm>=4.66.0
+urllib3>=2.0.0
